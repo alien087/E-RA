@@ -67,7 +67,7 @@ public class ReadQRCode {
     public boolean ReadQR () {
         // ReadQRCode
         try {
-            String filePath = "C:\\Users\\LigaS\\Documents\\NetBeansProjects\\TuBesPBO\\QR\\Coba.png";
+            String filePath = "C:\\Users\\Lenovo\\Documents\\GitHub\\E-RA\\QR\\Coba.png";
             //String filePath = "C:\\Users\\LigaS\\Documents\\NetBeansProjects\\TuBesPBO\\Coba.png";
             String charset = "UTF-8";
             Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel> ();

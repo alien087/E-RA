@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.sql.*;
 
 
 
@@ -28,7 +29,7 @@ public class QRCodeWriter {
     public void GeneratingQR (String nim, String tgl) {
         try {
             String qrCodeData = nim+tgl;
-            String filePath = "C:\\Users\\LigaS\\Documents\\NetBeansProjects\\TuBesPBO\\QR\\QR\\" + nim + ".png";
+            String filePath = "C:\\Users\\Lenovo\\Documents\\GitHub\\E-RA\\QR\\" + nim + ".png";
             String charset = "UTF-8"; // or "ISO-8859-1"
             Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel> ();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -43,8 +44,18 @@ public class QRCodeWriter {
         }
     }
     
-    public static void main (String[] args) {
-        QRCodeWriter QR = new QRCodeWriter();
-        QR.GeneratingQR("987654321", "123456");
+    public static void main (String[] args) throws SQLException {
+        Connect koneksi = new Connect();
+        Connection connect = koneksi.getConnection();
+        String query = "Select * from mahasiswa";
+        Statement stat = connect.createStatement();
+        ResultSet hasil = stat.executeQuery(query);
+        while (hasil.next()){
+            String nim = hasil.getString("nim");
+            String tgl = hasil.getString("tgl_lahir");
+            QRCodeWriter QR = new QRCodeWriter();
+            QR.GeneratingQR(nim, tgl);
+        }
+        
     }
 }
