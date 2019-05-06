@@ -5,6 +5,7 @@
  */
 package tubes;
 
+import java.math.BigDecimal;
 import keeptoo.Drag;
 import java.sql.*;
 import java.util.logging.*;
@@ -197,16 +198,22 @@ public class login extends javax.swing.JFrame {
         String id;
        
         id = jTextField2.getText();
-        //System.out.println(id);
-        String c = id.substring(0, 8);
         connect a = new connect();
-        System.out.println(c);
+     
         Connection koneks = a.getConnection();
-        String com = "SELECT * FROM mahasiswa WHERE nim='" + c + "'";
+        String com = "SELECT * FROM mahasiswa WHERE nim='" + id + "'";
         a.updateData(koneks, com);
-        dispose();
-        UserInterface ui = new UserInterface(jTextField2.getText());
-        ui.setVisible(true);
+        String b = a.returnpin();
+        String c = jPasswordField1.getText();
+        String nama = a.returnnama();
+        BigDecimal balance = a.returnsaldo();
+        
+        if(c.equals(b)){
+             dispose();
+             UserInterface ui = new UserInterface(id, nama, balance);
+             ui.setVisible(true);    
+        }
+  
 //       
        
     }//GEN-LAST:event_kButton1MouseClicked

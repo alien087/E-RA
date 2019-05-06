@@ -5,6 +5,8 @@
  */
 package tubes;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.*;
 
 
@@ -23,16 +25,31 @@ public class connect {
                         }
                 return koneksi;
     }
-    
+    private String pin,nama;
+    private BigDecimal balance;
      void updateData(Connection Connect, String query){
         try {
             Statement stat = Connect.createStatement();
             ResultSet hasil = stat.executeQuery(query);
             
-            String a = hasil.getString("nim");
-            System.out.println(a);
+            while(hasil.next()){
+                pin = hasil.getString("pin");
+                balance = hasil.getBigDecimal("saldo");
+                nama = hasil.getString("nama_depan") + hasil.getString("nama_belakang");
+            }
+            
         } catch (SQLException ex){
             System.out.println("Gagal update query!");
         }
     }
+     
+     public String returnpin(){
+         return pin;
+     }
+     public String returnnama(){
+         return nama;
+     }
+     public BigDecimal returnsaldo(){
+         return balance;
+     }
 }

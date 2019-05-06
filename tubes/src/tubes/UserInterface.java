@@ -5,6 +5,7 @@
  */
 package tubes;
 
+import java.math.BigDecimal;
 import javax.swing.JTable;
 
 /**
@@ -20,10 +21,14 @@ public class UserInterface extends javax.swing.JFrame {
     public UserInterface() {
        initComponents();
     }
-    public UserInterface(String name) {
+    public UserInterface(String id, String name, BigDecimal balance) {
        initComponents();
        
-       jLabel4.setText(name);
+       jLabel4.setText(id);
+       jLabel12.setText(id);
+       jLabel13.setText(name);
+       jLabel7.setText("Rp. " + balance);
+       
     }
 
     /**
