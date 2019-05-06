@@ -6,6 +6,9 @@
 package tubes;
 
 import keeptoo.Drag;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -184,8 +187,21 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ComponentRemoved
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        // TODO add your handling code here:
-          uname = jTextField2.getText();
+        try {
+            // TODO add your handling code here:
+            Connect koneksi = new Connect();
+            Connection connect = koneksi.getConnection();
+            Statement stat = connect.createStatement();
+            ResultSet hasil = stat.executeQuery("select * from mahasiswa");
+            while (hasil.next()){
+                if (hasil.getString(1).equals(jTextField2.getText())){
+                    break;
+                }
+            }
+            jPasswordField1.setText("login berhasil");
+        } catch (SQLException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked

@@ -26,7 +26,7 @@ public class tes {
         
         login input = new login();
         
-        coba = input.getText();
+        coba = input.getName();
         System.out.println(coba);
         
         
