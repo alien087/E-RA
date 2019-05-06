@@ -43,8 +43,6 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,16 +143,11 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel7);
         jLabel7.setBounds(420, 140, 130, 50);
 
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(300, 40, 100, 50);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,25 +195,13 @@ public class login extends javax.swing.JFrame {
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         // TODO add your handling code here:
         String id = jTextField2.getText();
-        connect koneksi = new connect();
-        Connection koneksi1 = koneksi.getConnection();
-        String gett = "SELECT pin FROM mahasiswa WHERE nim='" + id + "'";
-        String data = koneksi.getData(koneksi1, gett);
-        login a = new login();
-        char[] c = a.jPasswordField1.getPassword();
-        System.out.println(c.toString());
-        System.out.println(data);
-//        if(data==c){
-//             dispose();
-//             UserInterface ui = new UserInterface(jTextField2.getText());
-//             ui.setVisible(true);
-//        }
+        dispose();
+        UserInterface ui = new UserInterface(jTextField2.getText());
+        ui.setVisible(true);
+//       
        
     }//GEN-LAST:event_kButton1MouseClicked
-    public void test(String x){
-        login a = new login();
-        a.jTextPane1.setText(x);
-    }
+
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
@@ -270,9 +251,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextPane jTextPane1;
     private keeptoo.KButton kButton1;
     // End of variables declaration//GEN-END:variables
 }

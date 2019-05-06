@@ -45,6 +45,19 @@ public class connect {
         }
     }
     
+    String getData(Connection Connect, String query){
+        try {
+            Statement stat = Connect.createStatement();
+            ResultSet hasil = stat.executeQuery(query);
+            
+            String gett = hasil.getString("pin");
+            System.out.println(gett);
+            return gett;
+        } catch (SQLException ex){
+            System.out.println("gagal data");
+            return null;
+        }
+    }
 
     void close(Connection connect){
         try {
