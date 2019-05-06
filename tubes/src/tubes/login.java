@@ -7,8 +7,8 @@ package tubes;
 
 import keeptoo.Drag;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
+import javax.swing.text.BadLocationException;
 
 /**
  *
@@ -148,7 +148,7 @@ public class login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,25 +187,28 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ComponentRemoved
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
-            Connect koneksi = new Connect();
-            Connection connect = koneksi.getConnection();
-            Statement stat = connect.createStatement();
-            ResultSet hasil = stat.executeQuery("select * from mahasiswa");
-            while (hasil.next()){
-                if (hasil.getString(1).equals(jTextField2.getText())){
-                    break;
-                }
-            }
-            jPasswordField1.setText("login berhasil");
-        } catch (SQLException ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
+//        uname = jTextField2.getText();
+//        UserInterface ui = new UserInterface(uname);
+//        ui.setVisible(true);
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        // TODO add your handling code here:
+        String id;
+       
+        id = jTextField2.getText();
+        //System.out.println(id);
+        String c = id.substring(0, 8);
+        connect a = new connect();
+        System.out.println(c);
+        Connection koneks = a.getConnection();
+        String com = "SELECT * FROM mahasiswa WHERE nim='" + c + "'";
+        a.updateData(koneks, com);
+        dispose();
+        UserInterface ui = new UserInterface(jTextField2.getText());
+        ui.setVisible(true);
+//       
+       
     }//GEN-LAST:event_kButton1MouseClicked
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
