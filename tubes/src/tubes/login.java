@@ -5,6 +5,7 @@
  */
 package tubes;
 
+import QR.ReadQRCode;
 import java.math.BigDecimal;
 import keeptoo.Drag;
 import java.sql.*;
@@ -151,6 +152,11 @@ public class login extends javax.swing.JFrame {
         kButton2.setkHoverStartColor(new java.awt.Color(255, 255, 255));
         kButton2.setkSelectedColor(new java.awt.Color(255, 255, 255));
         kButton2.setkStartColor(new java.awt.Color(255, 255, 255));
+        kButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kButton2MouseClicked(evt);
+            }
+        });
         kButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kButton2ActionPerformed(evt);
@@ -236,7 +242,24 @@ public class login extends javax.swing.JFrame {
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_kButton2ActionPerformed
+
+    private void kButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton2MouseClicked
+        // TODO add your handling code here:
+        ReadQRCode R = new ReadQRCode();
+        boolean berhasil;
+        
+        R.OpenCamera();
+        
+        do {
+            berhasil = R.CatchImage();
+        } while (berhasil == false);
+        
+        R.CloseCamera();
+        String data = R.data();
+        System.out.println(data);
+    }//GEN-LAST:event_kButton2MouseClicked
 
     /**
      * @param args the command line arguments
