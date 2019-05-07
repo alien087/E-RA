@@ -36,7 +36,6 @@ public class login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -45,6 +44,7 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        kButton2 = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,11 +62,6 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel1.setLayout(null);
-
-        jLabel6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel6.setText("forgot your password?");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(610, 310, 130, 20);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Group 22.png"))); // NOI18N
         jPanel1.add(jLabel3);
@@ -114,7 +109,7 @@ public class login extends javax.swing.JFrame {
         kButton1.setkHoverEndColor(new java.awt.Color(255, 255, 255));
         kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 0));
-        kButton1.setkSelectedColor(new java.awt.Color(255, 153, 0));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 205, 255));
         kButton1.setkStartColor(new java.awt.Color(0, 205, 255));
         kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,6 +139,25 @@ public class login extends javax.swing.JFrame {
         jLabel7.setText("username");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(420, 140, 130, 50);
+
+        kButton2.setText("Login by QR?");
+        kButton2.setFocusable(false);
+        kButton2.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        kButton2.setkEndColor(new java.awt.Color(255, 255, 255));
+        kButton2.setkForeGround(new java.awt.Color(51, 51, 51));
+        kButton2.setkHoverColor(new java.awt.Color(0, 205, 255));
+        kButton2.setkHoverEndColor(new java.awt.Color(255, 255, 255));
+        kButton2.setkHoverForeGround(new java.awt.Color(0, 205, 255));
+        kButton2.setkHoverStartColor(new java.awt.Color(255, 255, 255));
+        kButton2.setkSelectedColor(new java.awt.Color(255, 255, 255));
+        kButton2.setkStartColor(new java.awt.Color(255, 255, 255));
+        kButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(kButton2);
+        kButton2.setBounds(640, 310, 90, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,6 +234,10 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
+    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,11 +279,11 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField2;
     private keeptoo.KButton kButton1;
+    private keeptoo.KButton kButton2;
     // End of variables declaration//GEN-END:variables
 }

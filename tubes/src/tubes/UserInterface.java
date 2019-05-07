@@ -182,6 +182,8 @@ public class UserInterface extends javax.swing.JFrame {
         jPanel1.add(jLabel10);
         jLabel10.setBounds(50, 240, 190, 40);
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
         table_history.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -208,6 +210,8 @@ public class UserInterface extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        table_history.setGridColor(new java.awt.Color(204, 204, 204));
+        table_history.setName(""); // NOI18N
         table_history.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table_history);
         if (table_history.getColumnModel().getColumnCount() > 0) {
@@ -229,7 +233,7 @@ public class UserInterface extends javax.swing.JFrame {
         ));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(50, 280, 810, 402);
+        jScrollPane1.setBounds(50, 270, 810, 220);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 890, 500);
@@ -250,10 +254,7 @@ public class UserInterface extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void setTextLabel4(){
-        login loginn = new login();
-        jLabel4.setText(loginn.getText());
-    }
+   
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
