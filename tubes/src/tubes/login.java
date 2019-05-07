@@ -193,10 +193,10 @@ public class login extends javax.swing.JFrame {
 //        UserInterface ui = new UserInterface(uname);
 //        ui.setVisible(true);
     }//GEN-LAST:event_kButton1ActionPerformed
-
+    private String id;
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
-        String id;
-       
+        
+        
         id = jTextField2.getText();
         connect a = new connect();
      
@@ -212,12 +212,10 @@ public class login extends javax.swing.JFrame {
              dispose();
              UserInterface ui = new UserInterface(id, nama, balance);
              ui.setVisible(true);    
-        }
-  
-//       
-       
+        } 
     }//GEN-LAST:event_kButton1MouseClicked
 
+    
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed

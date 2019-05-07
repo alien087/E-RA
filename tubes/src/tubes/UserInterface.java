@@ -6,7 +6,13 @@
 package tubes;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -28,6 +34,24 @@ public class UserInterface extends javax.swing.JFrame {
        jLabel12.setText(id);
        jLabel13.setText(name);
        jLabel7.setText("Rp. " + balance);
+       
+       try {
+        connect a = new connect();
+        login loginn = new login();
+        Connection koneks = a.getConnection();
+        String com = "SELECT * FROM transaksi WHERE nim='" + id + "'";
+        Statement stat = koneks.createStatement();
+        ResultSet hasil = stat.executeQuery(com);
+        table_history.setModel(DbUtils.resultSetToTableModel(hasil));
+        
+        String con = "SELECT MAX(tgl_transaksi) as max FROM transaksi";
+        a.getLastTransaction(koneks, con);
+        Date tanggal = (Date) a.returnlast();
+        jLabel14.setText("" + tanggal);
+        
+        } catch (SQLException ex){
+            System.out.println("Gagal update query!");
+        }
        
     }
 
@@ -154,7 +178,7 @@ public class UserInterface extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(710, -10, 40, 90);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Trassaction History.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Transaction History.png"))); // NOI18N
         jPanel1.add(jLabel10);
         jLabel10.setBounds(50, 240, 190, 40);
 

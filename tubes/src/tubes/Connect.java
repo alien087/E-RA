@@ -5,9 +5,14 @@
  */
 package tubes;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.*;
+import java.text.DateFormat;  
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
+import java.util.Calendar;  
 
 
 /**
@@ -25,8 +30,11 @@ public class connect {
                         }
                 return koneksi;
     }
+    
     private String pin,nama;
+    private Date a;
     private BigDecimal balance;
+    
      void updateData(Connection Connect, String query){
         try {
             Statement stat = Connect.createStatement();
@@ -42,6 +50,23 @@ public class connect {
             System.out.println("Gagal update query!");
         }
     }
+    
+     void getLastTransaction(Connection Connect, String query){
+          try {
+            Statement statt = Connect.createStatement();
+            ResultSet hasils = statt.executeQuery(query);
+              //System.out.println(hasils.getString("tgl_transaksi"));
+            while(hasils.next()){
+                a = hasils.getDate("max");
+//                a = hasils.getDate("tgl_transaksi");
+//                System.out.println(a);
+            }
+            
+        } catch (SQLException ex){
+            System.out.println("Gagal update query!");
+        }
+     }
+     
      
      public String returnpin(){
          return pin;
@@ -51,5 +76,9 @@ public class connect {
      }
      public BigDecimal returnsaldo(){
          return balance;
+     }
+     
+     public Date returnlast(){
+         return a;
      }
 }
