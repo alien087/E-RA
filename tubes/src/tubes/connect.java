@@ -51,6 +51,25 @@ public class connect {
         }
     }
      
+     
+     void updateSaldo(String id, String bills, Connection Connect, String query){
+         
+        try {
+            Statement stat = Connect.createStatement();
+            ResultSet hasil = stat.executeQuery(query);
+            
+            while(hasil.next()){
+                pin = hasil.getString("pin");
+                balance = hasil.getBigDecimal("saldo");
+                nama = hasil.getString("nama_depan") + hasil.getString("nama_belakang");
+            }
+            
+        } catch (SQLException ex){
+            System.out.println("Gagal update query!");
+        }
+    
+     }
+     
         void KaryawanData(Connection Connect, String query){
         try {
             Statement stat = Connect.createStatement();

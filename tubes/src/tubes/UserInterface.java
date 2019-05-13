@@ -79,12 +79,15 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_history = new javax.swing.JTable();
+        search_box = new javax.swing.JTextField();
 
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(680, 384));
         addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
             public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
                 formAncestorMoved(evt);
@@ -97,49 +100,56 @@ public class UserInterface extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        kButton1.setText("Balance");
+        kButton1.setText("LOG OUT");
         kButton1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         kButton1.setkEndColor(new java.awt.Color(255, 255, 255));
         kButton1.setkFillButton(false);
         kButton1.setkHoverEndColor(new java.awt.Color(255, 255, 255));
         kButton1.setkHoverForeGround(new java.awt.Color(255, 204, 0));
         kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 0));
+        kButton1.setkIndicatorThickness(4);
         kButton1.setkSelectedColor(new java.awt.Color(255, 255, 255));
         kButton1.setkStartColor(new java.awt.Color(255, 255, 255));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(kButton1);
         kButton1.setBounds(40, 35, 90, 20);
 
-        jLabel14.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 153, 0));
         jLabel14.setText("15-02-2019");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(680, 140, 260, 50);
+        jLabel14.setBounds(680, 130, 170, 50);
 
-        jLabel13.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 153, 0));
         jLabel13.setText("Dino Febriyanto");
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(490, 140, 250, 50);
+        jLabel13.setBounds(490, 140, 150, 60);
 
-        jLabel12.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 153, 0));
         jLabel12.setText("14117124");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(350, 140, 240, 50);
+        jLabel12.setBounds(350, 130, 240, 50);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Group 17.png"))); // NOI18N
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(330, 90, 540, 170);
+        jLabel9.setBounds(330, 80, 540, 160);
 
         jLabel7.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 205, 255));
         jLabel7.setText("Rp. 500.000");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(60, 150, 210, 40);
+        jLabel7.setBounds(60, 140, 210, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Group 36.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 90, 290, 160);
+        jLabel5.setBounds(30, 80, 290, 160);
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,6 +186,15 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Group 19.png"))); // NOI18N
         jPanel1.add(jLabel10);
         jLabel10.setBounds(50, 230, 320, 40);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/f9bb81e576c1a361c61a8c08945b2c48-search-icon-by-vexels.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(790, 230, 20, 30);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(153, 153, 153));
@@ -233,7 +252,18 @@ public class UserInterface extends javax.swing.JFrame {
         ));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(50, 270, 810, 220);
+        jScrollPane1.setBounds(50, 270, 810, 240);
+
+        search_box.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        search_box.setForeground(new java.awt.Color(102, 102, 102));
+        search_box.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        search_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_boxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(search_box);
+        search_box.setBounds(580, 240, 230, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 890, 500);
@@ -250,6 +280,38 @@ public class UserInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jLabel4AncestorAdded
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        try {
+        connect a = new connect();
+        login loginn = new login();
+        Connection koneks = a.getConnection();
+        String id = search_box.getText();
+        String com = "SELECT * FROM transaksi WHERE id_karyawan LIKE '%" + id + "%' OR id_kantin LIKE '%" + id + "%' OR tgl_transaksi LIKE '%" + id + "%' OR jumlah_transaksi LIKE '%" + id + "%'";
+        Statement stat = koneks.createStatement();
+        ResultSet hasil = stat.executeQuery(com);
+        table_history.setModel(DbUtils.resultSetToTableModel(hasil));
+        
+        String con = "SELECT MAX(tgl_transaksi) as max FROM transaksi";
+        a.getLastTransaction(koneks, con);
+        Date tanggal = (Date) a.returnlast();
+        jLabel14.setText("" + tanggal);
+        
+        } catch (SQLException ex){
+            System.out.println("Gagal update query!");
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void search_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_boxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search_boxActionPerformed
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new login().setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_kButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,24 +341,24 @@ public class UserInterface extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(UserInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+ 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UserInterface().setVisible(true);
-                jTable1.setModel(new javax.swing.table.DefaultTableModel);
-                String[] column = new String[] {
-                 "Produk Name", "Price"
-                };
-                
-                Object[][] product = new Object[][]{
-                    {"Beras", "20000"},
-                    {"Susu", "50000"}
-                };
-                
-                JTable a = new JTable(column, product);
+//                jTable1.setModel(new javax.swing.table.DefaultTableModel);
+//                String[] column = new String[] {
+//                 "Produk Name", "Price"
+//                };
+//                
+//                Object[][] product = new Object[][]{
+//                    {"Beras", "20000"},
+//                    {"Susu", "50000"}
+//                };
+//                
+//                JTable a = new JTable(column, product);
             }
-        });*/
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -309,6 +371,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -316,6 +379,7 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private keeptoo.KButton kButton1;
+    private javax.swing.JTextField search_box;
     private javax.swing.JTable table_history;
     // End of variables declaration//GEN-END:variables
 }

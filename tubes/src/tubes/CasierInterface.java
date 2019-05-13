@@ -8,9 +8,11 @@ package tubes;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.Popup;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -18,7 +20,8 @@ import net.proteanit.sql.DbUtils;
  * @author Alien
  */
 public class CasierInterface extends javax.swing.JFrame {
-
+    String id;
+    long biilss;
     /**
      * Creates new form AdminInterface
      */
@@ -73,8 +76,8 @@ public class CasierInterface extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        bills = new javax.swing.JTextField();
+        cust_id = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         kButton1 = new keeptoo.KButton();
         kButton3 = new keeptoo.KButton();
@@ -109,29 +112,29 @@ public class CasierInterface extends javax.swing.JFrame {
         kGradientPanel1.setkStartColor(new java.awt.Color(255, 255, 255));
         kGradientPanel1.setLayout(null);
 
-        jTextField1.setFont(new java.awt.Font("Nirmala UI", 1, 30)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField1.setText("0");
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 153, 153)));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        bills.setFont(new java.awt.Font("Nirmala UI", 1, 30)); // NOI18N
+        bills.setForeground(new java.awt.Color(51, 51, 51));
+        bills.setText("0");
+        bills.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 153, 153)));
+        bills.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                billsActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(jTextField1);
-        jTextField1.setBounds(350, 70, 200, 50);
+        kGradientPanel1.add(bills);
+        bills.setBounds(350, 70, 200, 50);
 
-        jTextField2.setFont(new java.awt.Font("Nirmala UI", 1, 30)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField2.setText("0");
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 153, 153)));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        cust_id.setFont(new java.awt.Font("Nirmala UI", 1, 30)); // NOI18N
+        cust_id.setForeground(new java.awt.Color(51, 51, 51));
+        cust_id.setText("0");
+        cust_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 153, 153)));
+        cust_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                cust_idActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(jTextField2);
-        jTextField2.setBounds(80, 70, 200, 50);
+        kGradientPanel1.add(cust_id);
+        cust_id.setBounds(80, 70, 200, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Group 20.png"))); // NOI18N
         kGradientPanel1.add(jLabel4);
@@ -142,6 +145,11 @@ public class CasierInterface extends javax.swing.JFrame {
         kButton1.setkEndColor(new java.awt.Color(0, 205, 255));
         kButton1.setkHoverEndColor(new java.awt.Color(0, 205, 255));
         kButton1.setkStartColor(new java.awt.Color(0, 205, 255));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(kButton1);
         kButton1.setBounds(730, 60, 110, 45);
 
@@ -150,6 +158,11 @@ public class CasierInterface extends javax.swing.JFrame {
         kButton3.setkEndColor(new java.awt.Color(0, 205, 255));
         kButton3.setkHoverEndColor(new java.awt.Color(0, 205, 255));
         kButton3.setkStartColor(new java.awt.Color(0, 205, 255));
+        kButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton3ActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(kButton3);
         kButton3.setBounds(590, 60, 110, 45);
 
@@ -180,13 +193,37 @@ public class CasierInterface extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void billsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_billsActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void cust_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cust_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_cust_idActionPerformed
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        // TODO add your handling code here:
+       
+        
+        
+    }//GEN-LAST:event_kButton1ActionPerformed
+    
+    public String getDataID(){
+        return id;
+    }
+    
+    public long getDataBills(){
+        return biilss;
+    }
+    
+    
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+        // TODO add your handling code here:
+        id=cust_id.getText();
+       biilss = Integer.parseInt(bills.getText());
+        ConfirmInterface confirm = new ConfirmInterface(id, biilss);
+        confirm.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_kButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,6 +262,8 @@ public class CasierInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bills;
+    private javax.swing.JTextField cust_id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -233,8 +272,6 @@ public class CasierInterface extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private keeptoo.KButton kButton1;
     private keeptoo.KButton kButton3;
     private keeptoo.KGradientPanel kGradientPanel1;
