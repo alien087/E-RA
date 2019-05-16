@@ -5,6 +5,12 @@
  */
 package tubes;
 
+import static java.awt.image.ImageObserver.WIDTH;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alien
@@ -162,7 +168,7 @@ public class EntryData extends javax.swing.JFrame {
             }
         });
         kGradientPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 10, 11, 20);
+        jLabel2.setBounds(410, 10, 8, 20);
 
         getContentPane().add(kGradientPanel1);
         kGradientPanel1.setBounds(0, 0, 444, 550);
@@ -192,7 +198,23 @@ public class EntryData extends javax.swing.JFrame {
     }//GEN-LAST:event_uName4ActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            connect baru = new connect();
+            Connection koneksi = baru.getConnection();
+            String nim = uName1.getText();
+            String nama_depan = uName.getText();
+            String nama_belakang = uName3.getText();
+            String tgl = uName4.getText();
+            String pin = uName2.getText();
+            String query = "insert into mahasiswa value ('"+nim+"','"+nama_depan+"','"+nama_belakang+"','"+tgl+"','"+pin+"',0)";
+            PreparedStatement statS = (PreparedStatement) koneksi.prepareStatement(query);
+            statS.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil Ditambahkan!", "Data Update", WIDTH);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Data Gagal Ditambahkan!", "Failed", WIDTH);
+        }
+        
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked

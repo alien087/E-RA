@@ -168,7 +168,9 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_kButton2ActionPerformed
 
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:D
+        EntryData baru = new EntryData();
+        baru.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_kButton3ActionPerformed
 
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
