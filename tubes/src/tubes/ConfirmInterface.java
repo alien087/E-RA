@@ -48,10 +48,7 @@ public class ConfirmInterface extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        uName = new javax.swing.JTextField();
         kButton1 = new keeptoo.KButton();
-        jLabel8 = new javax.swing.JLabel();
-        kButton2 = new keeptoo.KButton();
         jLabel2 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
 
@@ -68,7 +65,7 @@ public class ConfirmInterface extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setText("password");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(50, 160, 120, 50);
+        jLabel5.setBounds(50, 120, 120, 50);
 
         jLabel1.setFont(new java.awt.Font("Big John", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -76,16 +73,6 @@ public class ConfirmInterface extends javax.swing.JFrame {
         jLabel1.setText("cONFIRM ACCOUNT");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 30, 200, 60);
-
-        uName.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        uName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
-        uName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uNameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(uName);
-        uName.setBounds(50, 120, 190, 30);
 
         kButton1.setText("Confirm");
         kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
@@ -104,31 +91,6 @@ public class ConfirmInterface extends javax.swing.JFrame {
         jPanel1.add(kButton1);
         kButton1.setBounds(40, 270, 210, 40);
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel8.setText("username");
-        jLabel8.setToolTipText("");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(50, 80, 120, 50);
-
-        kButton2.setText("Confirm  by QR");
-        kButton2.setFocusable(false);
-        kButton2.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
-        kButton2.setkEndColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkForeGround(new java.awt.Color(51, 51, 51));
-        kButton2.setkHoverColor(new java.awt.Color(0, 205, 255));
-        kButton2.setkHoverEndColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkHoverForeGround(new java.awt.Color(0, 205, 255));
-        kButton2.setkHoverStartColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkSelectedColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkStartColor(new java.awt.Color(255, 255, 255));
-        kButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(kButton2);
-        kButton2.setBounds(130, 230, 120, 30);
-
         jLabel2.setFont(new java.awt.Font("Big John", 0, 12)); // NOI18N
         jLabel2.setText("X");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,12 +99,12 @@ public class ConfirmInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(280, 10, 10, 12);
+        jLabel2.setBounds(280, 10, 10, 16);
 
         pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         pass.setCaretColor(new java.awt.Color(51, 51, 51));
         jPanel1.add(pass);
-        pass.setBounds(50, 210, 190, 20);
+        pass.setBounds(50, 190, 190, 20);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 300, 350);
@@ -150,14 +112,6 @@ public class ConfirmInterface extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void uNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_uNameActionPerformed
-
-    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kButton2ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
@@ -173,7 +127,7 @@ public class ConfirmInterface extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Transaksi Pembayaran Berhasil!", "Transaksi Berhasil", WIDTH);
                 dispose();
             }
-            else JOptionPane.showMessageDialog(null, "Transaksi Pembayaran Gagal, Coba Cek ID dan Password Kembali", "Transaksi Gagal", WIDTH);
+            else JOptionPane.showMessageDialog(null, "Transaksi Pembayaran Gagal, Coba Password Kembali", "Transaksi Gagal", WIDTH);
             
             
         
@@ -185,11 +139,11 @@ public class ConfirmInterface extends javax.swing.JFrame {
         try{
            connect connects = new connect();
            Connection connections = connects.getConnection();
-           String query = "SELECT pin FROM mahasiswa WHERE nim='" + uName.getText() +"'";
+           String query = "SELECT password FROM karyawan WHERE id='" + idCasier +"'";
            Statement stat = connections.createStatement();
            ResultSet hasil = stat.executeQuery(query);
            while(hasil.next()){
-               password = hasil.getString("pin");
+               password = hasil.getString("password");
            }
        }
        catch (SQLException ex){
@@ -300,11 +254,8 @@ public class ConfirmInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private keeptoo.KButton kButton1;
-    private keeptoo.KButton kButton2;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField uName;
     // End of variables declaration//GEN-END:variables
 }
