@@ -114,7 +114,7 @@ public class ChangeData extends javax.swing.JFrame {
             }
         });
         kGradientPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 10, 11, 20);
+        jLabel2.setBounds(410, 10, 8, 20);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel13.setText("NEW PIN");
@@ -155,7 +155,7 @@ public class ChangeData extends javax.swing.JFrame {
              new ConfirmBirth(id, pass).setVisible(rootPaneCheckingEnabled);
         }
         else JOptionPane.showMessageDialog(null, "Ganti Password Gagal, Silahkan cek Kembali Kesamaan Password", "Gagal", WIDTH);
-        
+        dispose();
        
         
     }//GEN-LAST:event_kButton1ActionPerformed

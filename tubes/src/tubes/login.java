@@ -208,8 +208,10 @@ public class login extends javax.swing.JFrame {
             nama = a.returnnama();
             balance = a.returnsaldo();
         
-        
-        if(c.equals(b)){
+          if (nama.equals("") || kantin.equals("")){
+              JOptionPane.showMessageDialog(null, "Akun Tidak Tersedia", "Login Gagal", WIDTH);
+          }
+          else if(c.equals(b)){
             if(id.substring(0, 2).equals("KA")){
              dispose();
              CasierInterface ui = new CasierInterface(id, kantin);

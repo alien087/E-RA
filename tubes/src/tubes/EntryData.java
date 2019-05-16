@@ -168,7 +168,7 @@ public class EntryData extends javax.swing.JFrame {
             }
         });
         kGradientPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 10, 11, 20);
+        jLabel2.setBounds(410, 10, 8, 20);
 
         getContentPane().add(kGradientPanel1);
         kGradientPanel1.setBounds(0, 0, 444, 550);
@@ -214,6 +214,7 @@ public class EntryData extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Data Gagal Ditambahkan!", "Failed", WIDTH);
         }
+        dispose();
         
     }//GEN-LAST:event_kButton1ActionPerformed
 

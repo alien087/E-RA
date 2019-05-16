@@ -5,6 +5,12 @@
  */
 package tubes;
 
+import static java.awt.image.ImageObserver.WIDTH;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alien
@@ -112,7 +118,28 @@ public class ConfirmBirth extends javax.swing.JFrame {
     }//GEN-LAST:event_uName4ActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        
+        try {
+            String tgl = null;
+            connect konek = new connect();
+            Connection koneksi = konek.getConnection();
+            String query = "SELECT tgl_lahir FROM mahasiswa where nim = '"+id+"'";
+            Statement stat = koneksi.createStatement();
+            ResultSet hasil = stat.executeQuery(query);
+            while (hasil.next()){
+            tgl = hasil.getString("tgl_lahir");   
+            }
+            
+            if (tgl.equals(uName4.getText())){
+                query = "update mahasiswa set pin='"+pass+"' where nim = '"+id+"'";
+                PreparedStatement statS = (PreparedStatement) koneksi.prepareStatement(query);
+                statS.executeUpdate();
+                System.out.println("123");
+                JOptionPane.showMessageDialog(null, "Ganti Password Berhasil", "Berhasil", WIDTH);
+                dispose();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked

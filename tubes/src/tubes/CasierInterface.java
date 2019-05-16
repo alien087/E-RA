@@ -5,6 +5,7 @@
  */
 package tubes;
 
+import static java.awt.image.ImageObserver.WIDTH;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.Popup;
 import net.proteanit.sql.DbUtils;
 
@@ -265,19 +267,30 @@ public class CasierInterface extends javax.swing.JFrame {
     
     
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
-        // TODO add your handling code here:
-        id=cust_id.getText();
-        biilss = Integer.parseInt(bills.getText());
-        ConfirmInterface confirm = new ConfirmInterface(id, biilss, idCasier, idKantin);
-        confirm.setVisible(rootPaneCheckingEnabled);
-        connect a = new connect();
-        Connection koneks = a.getConnection();
-        String com = "SELECT * FROM transaksi WHERE id_kantin='" + idKantin + "'";
-        Statement stat;
-        try {
-            stat = koneks.createStatement();
-            ResultSet hasil = stat.executeQuery(com);
-            jTable1.setModel(DbUtils.resultSetToTableModel(hasil));
+        try {                                         
+            // TODO add your handling code here:
+            String password = "";
+            connect a = new connect();
+            Connection koneks = a.getConnection();
+            id=cust_id.getText();
+            biilss = Integer.parseInt(bills.getText());
+            String query = "SELECT pin FROM mahasiswa WHERE nim='" + id +"'";
+            Statement stat = koneks.createStatement();
+            ResultSet hasil = stat.executeQuery(query);
+            while(hasil.next()){
+                password = hasil.getString("pin");
+            }
+            if (password.equals("")){
+                JOptionPane.showMessageDialog(null, "Akun ini tidak ada", "Error", WIDTH);
+            }
+            else{
+                ConfirmInterface confirm = new ConfirmInterface(id, biilss, idCasier, idKantin);
+            confirm.setVisible(rootPaneCheckingEnabled);
+            String com = "SELECT * FROM transaksi WHERE id_kantin='" + idKantin + "'";
+                hasil = stat.executeQuery(com);
+                jTable1.setModel(DbUtils.resultSetToTableModel(hasil));
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(CasierInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
