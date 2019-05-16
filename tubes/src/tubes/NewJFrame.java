@@ -31,6 +31,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        kButton1 = new keeptoo.KButton();
         jLabel3 = new javax.swing.JLabel();
         try {
             jLabel1 =(javax.swing.JLabel)java.beans.Beans.instantiate(getClass().getClassLoader(), "tubes.NewJFrame_jLabel1");
@@ -45,7 +46,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        kButton1 = new keeptoo.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 204));
@@ -53,6 +53,23 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
+
+        kButton1.setText("LOGIN");
+        kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        kButton1.setkBackGroundColor(new java.awt.Color(255, 153, 0));
+        kButton1.setkEndColor(new java.awt.Color(0, 205, 255));
+        kButton1.setkHoverEndColor(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 0));
+        kButton1.setkSelectedColor(new java.awt.Color(255, 153, 0));
+        kButton1.setkStartColor(new java.awt.Color(0, 205, 255));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(kButton1);
+        kButton1.setBounds(355, 320, 140, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Group 1.png"))); // NOI18N
         jPanel1.add(jLabel3);
@@ -83,23 +100,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tubes/image/Nikmati Pengalaman Jajan YangLebih Mudah Bersama E-RA.png"))); // NOI18N
         jPanel1.add(jLabel8);
         jLabel8.setBounds(230, 260, 280, 130);
-
-        kButton1.setText("LOGIN");
-        kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        kButton1.setkBackGroundColor(new java.awt.Color(255, 153, 0));
-        kButton1.setkEndColor(new java.awt.Color(0, 205, 255));
-        kButton1.setkHoverEndColor(new java.awt.Color(255, 255, 255));
-        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 0));
-        kButton1.setkSelectedColor(new java.awt.Color(255, 153, 0));
-        kButton1.setkStartColor(new java.awt.Color(0, 205, 255));
-        kButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(kButton1);
-        kButton1.setBounds(355, 320, 140, 40);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 490));
 

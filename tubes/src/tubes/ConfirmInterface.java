@@ -10,8 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author Alien
  */
 public class ConfirmInterface extends javax.swing.JFrame {
-    String id;
+    String id, idCasier, idKantin;
     long billss;
     /**
      * Creates new form NewJFrame1
@@ -27,10 +28,12 @@ public class ConfirmInterface extends javax.swing.JFrame {
     public ConfirmInterface() {
         initComponents();
     }
-    public ConfirmInterface(String id, long billss) {
+    public ConfirmInterface(String id, long billss, String idCasier, String idKantin) {
         initComponents();
         this.id = id;
         this.billss = billss;
+        this.idCasier = idCasier;
+        this.idKantin = idKantin;
     }
 
     /**
@@ -55,7 +58,6 @@ public class ConfirmInterface extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(315, 389));
-        setPreferredSize(new java.awt.Dimension(300, 350));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -89,7 +91,8 @@ public class ConfirmInterface extends javax.swing.JFrame {
         kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         kButton1.setkBackGroundColor(new java.awt.Color(255, 153, 0));
         kButton1.setkEndColor(new java.awt.Color(0, 205, 255));
-        kButton1.setkHoverForeGround(new java.awt.Color(255, 153, 0));
+        kButton1.setkHoverEndColor(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 0));
         kButton1.setkSelectedColor(new java.awt.Color(255, 153, 0));
         kButton1.setkStartColor(new java.awt.Color(0, 205, 255));
@@ -165,11 +168,14 @@ public class ConfirmInterface extends javax.swing.JFrame {
        
             if(PasswordChecking()){
                 setSaldo();
+                setTransaction();
+                setKantin();
                 JOptionPane.showMessageDialog(null, "Transaksi Pembayaran Berhasil!", "Transaksi Berhasil", WIDTH);
+                dispose();
             }
-            else System.out.println("gagal");
+            else JOptionPane.showMessageDialog(null, "Transaksi Pembayaran Gagal, Coba Cek ID dan Password Kembali", "Transaksi Gagal", WIDTH);
             
-            dispose();
+            
         
     }//GEN-LAST:event_kButton1ActionPerformed
 
@@ -187,7 +193,7 @@ public class ConfirmInterface extends javax.swing.JFrame {
            }
        }
        catch (SQLException ex){
-           System.out.println("Gagal");
+           JOptionPane.showMessageDialog(null, "Gagal Mendapat Data Dari Database", "Transaksi Gagal", WIDTH);
        }
        
        if(pass.getText().equals(password)) return true;
@@ -218,6 +224,45 @@ public class ConfirmInterface extends javax.swing.JFrame {
                 System.out.println(ex);
         }
     }
+    
+    void setTransaction(){
+        Date dates = new Date();
+        SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");
+        String date = today.format(dates);
+        try{
+        connect konek = new connect();
+        Connection koneks = konek.getConnection();
+        CasierInterface kasir = new CasierInterface();
+        String query = "INSERT INTO transaksi VALUES ('" + id +"', '" + idCasier + "', '" + idKantin + "', '" + date +"', '" + billss + "', 'top up')" ;
+        PreparedStatement statS = (PreparedStatement) koneks.prepareStatement(query);
+        statS.executeUpdate();
+        }
+        catch (SQLException ex) {
+                System.out.println(ex);
+        }
+    }
+    
+    void setKantin(){
+        try{
+        connect konek = new connect();
+        Connection koneks = konek.getConnection();
+        String com = "SELECT saldo FROM kantin WHERE id='" + idKantin + "'";
+        Statement stat = koneks.createStatement();
+        ResultSet hasil = stat.executeQuery(com);
+        long saldo = 0;
+        while(hasil.next()){
+            saldo = hasil.getLong("saldo");
+        }
+        saldo = saldo-billss;
+        String query = "UPDATE kantin SET saldo = " + saldo + " WHERE id='" + idKantin + "'";
+        PreparedStatement statS = (PreparedStatement) koneks.prepareStatement(query);
+        statS.executeUpdate();
+        }
+        catch (SQLException ex) {
+                System.out.println(ex);
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

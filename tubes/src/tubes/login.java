@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import keeptoo.Drag;
 import java.sql.*;
 import java.util.logging.*;
+import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 
 /**
@@ -16,13 +17,14 @@ import javax.swing.text.BadLocationException;
  * @author Alien
  */
 public class login extends javax.swing.JFrame {
-
+    private String id=" ";
     /**
      * Creates new form NewJFrame1
      */
  
     public login() {
         initComponents();
+        id=" ";
     }
     
 
@@ -90,6 +92,7 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jPasswordField1);
         jPasswordField1.setBounds(420, 275, 310, 30);
 
+        kButton1.setBackground(new java.awt.Color(255, 255, 255));
         kButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         kButton1.setText("Login");
         kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
@@ -99,6 +102,7 @@ public class login extends javax.swing.JFrame {
         kButton1.setkHoverEndColor(new java.awt.Color(255, 255, 255));
         kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
         kButton1.setkHoverStartColor(new java.awt.Color(255, 153, 0));
+        kButton1.setkPressedColor(new java.awt.Color(255, 255, 255));
         kButton1.setkSelectedColor(new java.awt.Color(255, 153, 0));
         kButton1.setkStartColor(new java.awt.Color(0, 205, 255));
         kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -178,14 +182,14 @@ public class login extends javax.swing.JFrame {
        // jPasswordField1.setText(getText());
         
     }//GEN-LAST:event_jPasswordField1ComponentRemoved
-    private String id;
+    
     private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
         
-        
+        String c="", b="";
         id = jTextField2.getText();
         System.out.println(id.substring(0, 2));
-        String com, nama, kantin="";
-        BigDecimal balance;
+        String com, nama="", kantin="";
+        BigDecimal balance=null;
         connect a = new connect();
         Connection koneks = a.getConnection();
         if(id.substring(0, 2).equals("KA")){
@@ -199,24 +203,34 @@ public class login extends javax.swing.JFrame {
             
         }
         
-        String b = a.returnpin();
-        String c = jPasswordField1.getText();
-        nama = a.returnnama();
-        balance = a.returnsaldo();
+            b = a.returnpin();
+            c = jPasswordField1.getText();
+            nama = a.returnnama();
+            balance = a.returnsaldo();
+        
         
         if(c.equals(b)){
             if(id.substring(0, 2).equals("KA")){
              dispose();
-             CasierInterface ui = new CasierInterface(id, nama, kantin);
-             ui.setVisible(true);    
+             CasierInterface ui = new CasierInterface(id, kantin);
+             ui.setVisible(true);
+             kButton1.resetKeyboardActions();
+            }
+            else if(id.subSequence(0, 2).equals("AD")){
+                
             }
             else{
              dispose();
              UserInterface ui = new UserInterface(id, nama, balance);
              ui.setVisible(true);
+             kButton1.resetKeyboardActions();
             }
                  
-        } 
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Gagal Login, Coba Cek ID dan Password Kembali", "Login Gagal", WIDTH);
+             kButton1.resetKeyboardActions();
+        }
     }//GEN-LAST:event_kButton1MouseClicked
 
     
