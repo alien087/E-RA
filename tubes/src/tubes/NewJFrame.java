@@ -101,7 +101,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(230, 260, 280, 130);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 500));
 
         pack();
         setLocationRelativeTo(null);

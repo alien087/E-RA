@@ -23,7 +23,7 @@ public class connect {
      Connection koneksi;
     public Connection getConnection(){
         try{
-                koneksi = DriverManager.getConnection("jdbc:mysql://localhost:3307/emoney_itera","root","");
+                koneksi = DriverManager.getConnection("jdbc:mysql://localhost:3306/emoney_itera","root","");
                 
         } catch (SQLException e){
                         System.out.println("Tidak dapat menyambungkan ke database");

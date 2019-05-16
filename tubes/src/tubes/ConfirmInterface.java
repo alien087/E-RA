@@ -54,7 +54,7 @@ public class ConfirmInterface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(315, 389));
+        setMinimumSize(new java.awt.Dimension(315, 338));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -65,14 +65,14 @@ public class ConfirmInterface extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel5.setText("password");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(50, 120, 120, 50);
+        jLabel5.setBounds(50, 100, 120, 50);
 
         jLabel1.setFont(new java.awt.Font("Big John", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("cONFIRM ACCOUNT");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(50, 30, 200, 60);
+        jLabel1.setBounds(50, 50, 200, 60);
 
         kButton1.setText("Confirm");
         kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
@@ -89,7 +89,7 @@ public class ConfirmInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton1);
-        kButton1.setBounds(40, 270, 210, 40);
+        kButton1.setBounds(50, 210, 210, 40);
 
         jLabel2.setFont(new java.awt.Font("Big John", 0, 12)); // NOI18N
         jLabel2.setText("X");
@@ -99,17 +99,17 @@ public class ConfirmInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(280, 10, 10, 16);
+        jLabel2.setBounds(280, 10, 10, 12);
 
         pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
         pass.setCaretColor(new java.awt.Color(51, 51, 51));
         jPanel1.add(pass);
-        pass.setBounds(50, 190, 190, 20);
+        pass.setBounds(50, 150, 210, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 300, 350);
+        jPanel1.setBounds(0, 0, 300, 300);
 
-        pack();
+        setSize(new java.awt.Dimension(315, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

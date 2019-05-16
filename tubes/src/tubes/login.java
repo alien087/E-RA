@@ -192,7 +192,7 @@ public class login extends javax.swing.JFrame {
         BigDecimal balance=null;
         connect a = new connect();
         Connection koneks = a.getConnection();
-        if(id.substring(0, 2).equals("KA")){
+        if(id.substring(0, 2).equals("KA") || id.substring(0, 2).equals("AD")){
             com = "SELECT * FROM karyawan WHERE id='" + id + "'";
             a.KaryawanData(koneks, com);  
             kantin = a.returnkantin();
@@ -217,7 +217,10 @@ public class login extends javax.swing.JFrame {
              kButton1.resetKeyboardActions();
             }
             else if(id.subSequence(0, 2).equals("AD")){
-                
+             dispose();
+             AdminInterface ui = new AdminInterface();
+             ui.setVisible(true);
+             kButton1.resetKeyboardActions();
             }
             else{
              dispose();

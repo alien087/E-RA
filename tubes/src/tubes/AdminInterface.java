@@ -61,7 +61,7 @@ public class AdminInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton2);
-        kButton2.setBounds(690, 160, 180, 50);
+        kButton2.setBounds(660, 160, 150, 50);
 
         kButton3.setText("ADD CUSTOMER");
         kButton3.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
@@ -78,10 +78,10 @@ public class AdminInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton3);
-        kButton3.setBounds(20, 160, 210, 50);
+        kButton3.setBounds(20, 160, 170, 50);
 
-        kButton4.setText("CHANGE CUSTOMER\n DATA");
-        kButton4.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        kButton4.setText("CHANGE CUSTOMER PASSWORD");
+        kButton4.setFont(new java.awt.Font("Nirmala UI", 1, 15)); // NOI18N
         kButton4.setkBackGroundColor(new java.awt.Color(255, 153, 0));
         kButton4.setkEndColor(new java.awt.Color(0, 205, 255));
         kButton4.setkHoverEndColor(new java.awt.Color(255, 255, 255));
@@ -95,7 +95,7 @@ public class AdminInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton4);
-        kButton4.setBounds(240, 160, 250, 50);
+        kButton4.setBounds(200, 160, 250, 50);
 
         kButton5.setText("SEE ALL CUSTOMER");
         kButton5.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
@@ -112,7 +112,7 @@ public class AdminInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton5);
-        kButton5.setBounds(500, 160, 180, 50);
+        kButton5.setBounds(470, 160, 180, 50);
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 205, 255));
@@ -175,6 +175,7 @@ public class AdminInterface extends javax.swing.JFrame {
 
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
         // TODO add your handling code here:
+        new ChangeData().setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_kButton4ActionPerformed
 
     private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed

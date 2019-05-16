@@ -19,7 +19,7 @@ import net.proteanit.sql.DbUtils;
  * @author Alien
  */
 public class UserInterface extends javax.swing.JFrame {
-
+    String id;
     /**
      * Creates new form UserInterface
      */
@@ -29,7 +29,7 @@ public class UserInterface extends javax.swing.JFrame {
     }
     public UserInterface(String id, String name, BigDecimal balance) {
        initComponents();
-       
+       this.id=id;
        jLabel4.setText(id);
        jLabel12.setText(id);
        jLabel13.setText(name);
@@ -252,7 +252,7 @@ public class UserInterface extends javax.swing.JFrame {
         ));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(50, 270, 810, 240);
+        jScrollPane1.setBounds(50, 270, 810, 230);
 
         search_box.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         search_box.setForeground(new java.awt.Color(102, 102, 102));
@@ -287,8 +287,8 @@ public class UserInterface extends javax.swing.JFrame {
         connect a = new connect();
         login loginn = new login();
         Connection koneks = a.getConnection();
-        String id = search_box.getText();
-        String com = "SELECT * FROM transaksi WHERE id_karyawan LIKE '%" + id + "%' OR id_kantin LIKE '%" + id + "%' OR tgl_transaksi LIKE '%" + id + "%' OR jumlah_transaksi LIKE '%" + id + "%'";
+        String ids = search_box.getText();
+        String com = "SELECT * FROM transaksi WHERE nim='" + id + "' AND (id_karyawan LIKE '%" + ids + "%' OR id_kantin LIKE '%" + ids + "%' OR tgl_transaksi LIKE '%" + ids + "%' OR jumlah_transaksi LIKE '%" + ids + "%')";
         Statement stat = koneks.createStatement();
         ResultSet hasil = stat.executeQuery(com);
         table_history.setModel(DbUtils.resultSetToTableModel(hasil));
