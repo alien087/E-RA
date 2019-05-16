@@ -52,6 +52,11 @@ public class ConfirmBirth extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("X");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1);
         jLabel1.setBounds(290, 10, 20, 20);
 
@@ -98,7 +103,8 @@ public class ConfirmBirth extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 320, 270);
 
-        setBounds(0, 0, 336, 302);
+        setSize(new java.awt.Dimension(336, 302));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void uName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uName4ActionPerformed
@@ -108,6 +114,11 @@ public class ConfirmBirth extends javax.swing.JFrame {
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         
     }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

@@ -5,14 +5,16 @@
  */
 package tubes;
 
+import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Alien
  */
 public class ChangeData extends javax.swing.JFrame {
-
+    String id, pass, confpass;
     /**
      * Creates new form ChangeData
      */
@@ -133,7 +135,8 @@ public class ChangeData extends javax.swing.JFrame {
         getContentPane().add(kGradientPanel1);
         kGradientPanel1.setBounds(0, 0, 444, 420);
 
-        setBounds(0, 0, 460, 459);
+        setSize(new java.awt.Dimension(460, 459));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void uName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uName2ActionPerformed
@@ -145,13 +148,22 @@ public class ChangeData extends javax.swing.JFrame {
     }//GEN-LAST:event_uName4ActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
-        new ConfirmBirth().setVisible(rootPaneCheckingEnabled);
+        id = uName4.getText();
+        pass = uName5.getText();
+        confpass = uName2.getText();
+        if(pass.equals(confpass)){
+             new ConfirmBirth(id, pass).setVisible(rootPaneCheckingEnabled);
+        }
+        else JOptionPane.showMessageDialog(null, "Ganti Password Gagal, Silahkan cek Kembali Kesamaan Password", "Gagal", WIDTH);
+        
+       
         
     }//GEN-LAST:event_kButton1ActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         dispose();
+       
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void uName5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uName5ActionPerformed

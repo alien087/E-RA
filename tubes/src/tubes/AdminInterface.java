@@ -5,6 +5,13 @@
  */
 package tubes;
 
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Alien
@@ -16,7 +23,41 @@ public class AdminInterface extends javax.swing.JFrame {
      */
     public AdminInterface() {
         initComponents();
+         try {
+        connect a = new connect();
+        login loginn = new login();
+        Connection koneks = a.getConnection();
+        String com = "SELECT * FROM transaksi";
+        Statement stat = koneks.createStatement();
+        ResultSet hasil = stat.executeQuery(com);
+        jTable1.setModel(DbUtils.resultSetToTableModel(hasil));
+        com = "SELECT COUNT(id) FROM kantin";
+        hasil = stat.executeQuery(com);
+        int countKantin=0;
+        while(hasil.next()){
+            countKantin = hasil.getInt("COUNT(id)");
+        }
+        jLabel3.setText(" "+countKantin );
+        
+        com = "SELECT COUNT(id_kantin) FROM transaksi";
+        hasil = stat.executeQuery(com);
+        while(hasil.next()){
+            jLabel2.setText("" + hasil.getInt("COUNT(id_kantin)"));
+        }
+        
+        com = "SELECT COUNT(nim) FROM mahasiswa";
+        hasil = stat.executeQuery(com);
+        while(hasil.next()){
+            jLabel4.setText("" + hasil.getInt("COUNT(nim)"));
+        }
+        
+        
+        } catch (SQLException ex){
+            System.out.println("Gagal update query!");
+        }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
