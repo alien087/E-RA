@@ -17,13 +17,14 @@ import net.proteanit.sql.DbUtils;
  * @author Alien
  */
 public class AdminInterface extends javax.swing.JFrame {
-
+    String id;
     /**
      * Creates new form AdminInterface
      */
-    public AdminInterface() {
+    public AdminInterface(String id) {
         initComponents();
-         try {
+        this.id = id;
+        try {
         connect a = new connect();
         login loginn = new login();
         Connection koneks = a.getConnection();
@@ -69,9 +70,9 @@ public class AdminInterface extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        kButton2 = new keeptoo.KButton();
         kButton3 = new keeptoo.KButton();
         kButton4 = new keeptoo.KButton();
+        kButton6 = new keeptoo.KButton();
         kButton5 = new keeptoo.KButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -87,24 +88,7 @@ public class AdminInterface extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        kButton2.setText("SEE ALL KANTIN");
-        kButton2.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        kButton2.setkBackGroundColor(new java.awt.Color(255, 153, 0));
-        kButton2.setkEndColor(new java.awt.Color(0, 205, 255));
-        kButton2.setkHoverEndColor(new java.awt.Color(255, 255, 255));
-        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton2.setkHoverStartColor(new java.awt.Color(255, 153, 0));
-        kButton2.setkSelectedColor(new java.awt.Color(255, 153, 0));
-        kButton2.setkStartColor(new java.awt.Color(0, 205, 255));
-        kButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(kButton2);
-        kButton2.setBounds(660, 160, 150, 50);
-
-        kButton3.setText("ADD CUSTOMER");
+        kButton3.setText("Log Out");
         kButton3.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         kButton3.setkBackGroundColor(new java.awt.Color(255, 153, 0));
         kButton3.setkEndColor(new java.awt.Color(0, 205, 255));
@@ -119,10 +103,10 @@ public class AdminInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton3);
-        kButton3.setBounds(20, 160, 170, 50);
+        kButton3.setBounds(630, 160, 160, 50);
 
         kButton4.setText("CHANGE CUSTOMER PASSWORD");
-        kButton4.setFont(new java.awt.Font("Nirmala UI", 1, 15)); // NOI18N
+        kButton4.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         kButton4.setkBackGroundColor(new java.awt.Color(255, 153, 0));
         kButton4.setkEndColor(new java.awt.Color(0, 205, 255));
         kButton4.setkHoverEndColor(new java.awt.Color(255, 255, 255));
@@ -138,7 +122,24 @@ public class AdminInterface extends javax.swing.JFrame {
         jPanel1.add(kButton4);
         kButton4.setBounds(200, 160, 250, 50);
 
-        kButton5.setText("SEE ALL CUSTOMER");
+        kButton6.setText("Add Customer");
+        kButton6.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        kButton6.setkBackGroundColor(new java.awt.Color(255, 153, 0));
+        kButton6.setkEndColor(new java.awt.Color(0, 205, 255));
+        kButton6.setkHoverEndColor(new java.awt.Color(255, 255, 255));
+        kButton6.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton6.setkHoverStartColor(new java.awt.Color(255, 153, 0));
+        kButton6.setkSelectedColor(new java.awt.Color(255, 153, 0));
+        kButton6.setkStartColor(new java.awt.Color(0, 205, 255));
+        kButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(kButton6);
+        kButton6.setBounds(20, 160, 170, 50);
+
+        kButton5.setText("Add Kantin");
         kButton5.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         kButton5.setkBackGroundColor(new java.awt.Color(255, 153, 0));
         kButton5.setkEndColor(new java.awt.Color(0, 205, 255));
@@ -153,7 +154,7 @@ public class AdminInterface extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton5);
-        kButton5.setBounds(470, 160, 180, 50);
+        kButton5.setBounds(460, 160, 160, 50);
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 205, 255));
@@ -202,16 +203,10 @@ public class AdminInterface extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
-
-        
-
-    }//GEN-LAST:event_kButton2ActionPerformed
-
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
         // TODO add your handling code here:D
-        EntryData baru = new EntryData();
-        baru.setVisible(rootPaneCheckingEnabled);
+        dispose();
+          new login().setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_kButton3ActionPerformed
 
     private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
@@ -219,9 +214,14 @@ public class AdminInterface extends javax.swing.JFrame {
         new ChangeData().setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_kButton4ActionPerformed
 
+    private void kButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton6ActionPerformed
+        // TODO add your handling code here:
+        new EntryData().setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_kButton6ActionPerformed
+
     private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
         // TODO add your handling code here:
-        
+        new AddKantin().setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_kButton5ActionPerformed
 
     /**
@@ -254,7 +254,8 @@ public class AdminInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminInterface().setVisible(true);
+                String id = null;
+                new AdminInterface(id).setVisible(true);
             }
         });
     }
@@ -267,9 +268,9 @@ public class AdminInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private keeptoo.KButton kButton2;
     private keeptoo.KButton kButton3;
     private keeptoo.KButton kButton4;
     private keeptoo.KButton kButton5;
+    private keeptoo.KButton kButton6;
     // End of variables declaration//GEN-END:variables
 }

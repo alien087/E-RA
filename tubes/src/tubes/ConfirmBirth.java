@@ -70,7 +70,7 @@ public class ConfirmBirth extends javax.swing.JFrame {
         jLabel12.setText("Birth Date (yyyy-mm-dd)");
         jLabel12.setToolTipText("");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(40, 100, 200, 22);
+        jLabel12.setBounds(40, 110, 200, 22);
 
         uName4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         uName4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
@@ -80,7 +80,7 @@ public class ConfirmBirth extends javax.swing.JFrame {
             }
         });
         jPanel1.add(uName4);
-        uName4.setBounds(40, 130, 240, 20);
+        uName4.setBounds(40, 140, 250, 20);
 
         kButton1.setText("CONFIRM");
         kButton1.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
@@ -97,7 +97,7 @@ public class ConfirmBirth extends javax.swing.JFrame {
             }
         });
         jPanel1.add(kButton1);
-        kButton1.setBounds(80, 170, 150, 30);
+        kButton1.setBounds(80, 200, 150, 30);
 
         jLabel2.setFont(new java.awt.Font("Big John", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -118,6 +118,7 @@ public class ConfirmBirth extends javax.swing.JFrame {
     }//GEN-LAST:event_uName4ActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        System.out.println(id);
         try {
             String tgl = null;
             connect konek = new connect();
@@ -128,7 +129,6 @@ public class ConfirmBirth extends javax.swing.JFrame {
             while (hasil.next()){
             tgl = hasil.getString("tgl_lahir");   
             }
-            
             if (tgl.equals(uName4.getText())){
                 query = "update mahasiswa set pin='"+pass+"' where nim = '"+id+"'";
                 PreparedStatement statS = (PreparedStatement) koneksi.prepareStatement(query);
@@ -136,6 +136,10 @@ public class ConfirmBirth extends javax.swing.JFrame {
                 System.out.println("123");
                 JOptionPane.showMessageDialog(null, "Ganti Password Berhasil", "Berhasil", WIDTH);
                 dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ganti Password Gagal, Cek Tanggal Lahir Kembali", "Gagal", WIDTH);
+                uName4.setText(" ");
             }
         } catch (SQLException ex) {
             System.out.println(ex);

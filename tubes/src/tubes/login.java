@@ -218,7 +218,7 @@ public class login extends javax.swing.JFrame {
             }
             else if(id.subSequence(0, 2).equals("AD")){
              dispose();
-             AdminInterface ui = new AdminInterface();
+             AdminInterface ui = new AdminInterface(id);
              ui.setVisible(true);
              kButton1.resetKeyboardActions();
             }

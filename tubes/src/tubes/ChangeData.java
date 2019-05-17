@@ -7,6 +7,11 @@ package tubes;
 
 import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -114,7 +119,7 @@ public class ChangeData extends javax.swing.JFrame {
             }
         });
         kGradientPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 10, 8, 20);
+        jLabel2.setBounds(410, 10, 11, 20);
 
         jLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel13.setText("NEW PIN");
@@ -151,12 +156,30 @@ public class ChangeData extends javax.swing.JFrame {
         id = uName4.getText();
         pass = uName5.getText();
         confpass = uName2.getText();
-        if(pass.equals(confpass)){
-             new ConfirmBirth(id, pass).setVisible(rootPaneCheckingEnabled);
+        connect konek = new connect();
+        String idcek = "a";
+            
+        try {
+            Statement stat;
+            Connection koneksi = konek.getConnection();
+            String query = "SELECT nim FROM mahasiswa where nim = '"+id+"'";
+            stat = koneksi.createStatement();
+            ResultSet hasil = stat.executeQuery(query);
+            while (hasil.next()){
+            idcek = hasil.getString("nim");   
+            }
+            if(idcek.equals("a")) JOptionPane.showMessageDialog(null, "Ganti Password Gagal, Akun Tidak Terdaftar", "Gagal", WIDTH);
+            else{
+                if(pass.equals(confpass)){
+                new ConfirmBirth(id, pass).setVisible(rootPaneCheckingEnabled);
+                dispose();
+                }
+                else JOptionPane.showMessageDialog(null, "Ganti Password Gagal, Silahkan cek Kembali Kesamaan Password", "Gagal", WIDTH);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Gagal", WIDTH);
         }
-        else JOptionPane.showMessageDialog(null, "Ganti Password Gagal, Silahkan cek Kembali Kesamaan Password", "Gagal", WIDTH);
-        dispose();
-       
+        
         
     }//GEN-LAST:event_kButton1ActionPerformed
 
